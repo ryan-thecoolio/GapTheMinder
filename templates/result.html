@@ -46,7 +46,9 @@ Investment Result - Ape Trading
             <p>{{ answer_detail }}</p>
         </div>
     </div>
-
+    <div>
+    {{ chart_html | safe }}
+    </div>
     <div class="mt-4">
         <a href="/investment" class="btn btn-primary">Back to Investment</a>
         <a href="/" class="btn btn-secondary">Homepage</a>
