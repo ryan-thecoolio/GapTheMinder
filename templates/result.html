@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}
+Investment Result - Ape Trading
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="text-center mb-5">
+        {% if result == 'correct' %}
+            <h1 class="text-success">Your smart as APES!</h1>
+        {% else %}
+            <h1 class="text-danger">Even APES are smarter!</h1>
+        {% endif %}
+        <h3>Only {{ answer_percentage }} of people got this question right!</h3>
+        <!-- Table for displaying the question, answer, and stock details -->
+        <div class="mt-4">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Stock</th>
+                        <th>Price Change (%)</th>
+                        <th>Invested Amount ($)</th>
+                        <th>New Price ($)</th>
+                        <th>Your Balance ($)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ stock }}</td>
+                        <td>{{ '%.2f' % (price_change * 100) }}%</td>
+                        <td>{{ amount }}</td>
+                        <td>{{ '%.2f' % stock_data[stock] }}</td>
+                        <td>{{ '%.2f' % new_balance }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 class="primary"> Answer - {{ correct_answer }}</h2>
+            <p>{{ answer_detail }}</p>
+        </div>
+    </div>
+
+        <!-- Navigation buttons -->
+        <div class="mt-4">
+            <a href="/investment" class="btn btn-primary">Back to Investment</a>
+            <a href="/" class="btn btn-secondary">Homepage</a>
+            <a href="/logout" class="btn btn-danger">Logout</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

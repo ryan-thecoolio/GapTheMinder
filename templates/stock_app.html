@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}
+Stock App - Ape Trading
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex align-items-center justify-content-center position-absolute top-50 start-50 translate-middle flex-nowrap">
+        <img src="https://s3.eu-west-1.amazonaws.com/static.gapminder.org/GapminderMedia/wp-uploads/20191012155318/gapminder-method.png"
+             class="img-fluid me-3"
+             style="width: 200px;"
+             alt="Stock Image">
+        <div class="text-nowrap">
+            <h1 class="mb-0" style="font-size: 6rem; color: white;">Stock App</h1>
+            <h2 class="mt-0" style="font-size: 3rem; color: #d6d6d6;">Invest in the Virtual Market</h2>
+        </div>
+    </div>
+    <div class="position-absolute start-50 translate-middle-x" style="bottom: 150px;">
+        <h4 style="font-size: 2rem; color: #CACACA; white-space: nowrap;">Make informed decisions and watch your balance grow!</h4>
+    </div>
+
+    <h2 style="font-size: 3rem; color: white; text-align: center; margin-top: 50px;">Choose a Stock to Invest In:</h2>
+
+    <!-- List of stocks to invest in -->
+    <div class="d-flex justify-content-center mt-4">
+        <ul class="list-group list-group-flush" style="max-width: 400px;">
+            {% for stock, price in stocks.items() %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <strong>{{ stock }}</strong> - ${{ price }}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <h2 style="font-size: 2rem; color: white; text-align: center; margin-top: 50px;">Answer the Daily Question:</h2>
+
+    <!-- Daily Question Form -->
+    <div class="d-flex justify-content-center mt-4">
+        <form action="{{ url_for('invest') }}" method="POST" style="width: 100%; max-width: 500px;">
+            <div class="mb-3">
+                <label for="stock" class="form-label text-white">Select Stock:</label>
+                <select class="form-select" name="stock" id="stock" required>
+                    {% for stock in stocks.keys() %}
+                        <option value="{{ stock }}">{{ stock }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="answer" class="form-label text-white">Your Answer (yes/no):</label>
+                <input type="text" class="form-control" id="answer" name="answer" required>
+            </div>
+            <div class="mb-3">
+                <label for="amount" class="form-label text-white">Amount to Invest ($):</label>
+                <input type="number" class="form-control" id="amount" name="amount" required min="1">
+            </div>
+            <button type="submit" class="btn btn-success">Invest</button>
+        </form>
+    </div>
+
+    <div class="mt-5 text-center">
+        <a href="/login" class="btn btn-secondary">Login</a>
+        <a href="/signup" class="btn btn-secondary">Sign Up</a>
+    </div>
+</div>
+{% endblock %}
