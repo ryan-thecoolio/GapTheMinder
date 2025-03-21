@@ -1,0 +1,108 @@
+{
+  "$LiveLaughLand": [
+    {
+        "question": "Biologists have evaluated the status of more than 160,000 species of plants and animals. How many are endangered or threatened?",
+        "choices": ["Around 30%", "Around 50%", "Around 90%"],
+        "answer": ["Around 30%","35%","If you think a majority of nature is threatened you may easily lose hope and fail to realize what is needed to save the species that are actually threatened.."]
+    },
+    {
+        "question": "What group of animals has the highest share of threatened species?",
+        "choices": ["Birds", "Mammals", "Amphibians"],
+        "answer": ["Amphibians","30%","Many birds are beautiful, but slimy and cold-blooded animals like salamanders and frogs are more threatened."]
+    },
+    {
+        "question": "What share of all agricultural land worldwide is used for feeding animals?",
+        "choices": ["Roughly 25%", "Roughly 50%", "Roughly 80%"],
+        "answer": ["Roughly 80%","22%","Many people believe less than half of all agricultural land is used for animals, but it's actually most of it."]
+    },
+    {
+        "question": "What happened to the global forest area in the last 30 years",
+        "choices": ["Decreased around 50%", "Decreased around 30%", "Decreased around 10%"],
+        "answer": ["Decreased around 10%","7%","Deforestation is real, but it's not as fast as you think."]
+    },
+    {
+        "question": "Of all the area that was tropical rainforest 100 years ago worldwide, how much is still tropical rainforest today?",
+        "choices": ["Less than 10%", "Around 20%", "More than 30%"],
+        "answer": ["More than 30%","27%","You are right that a lot of the original tropical rainforest has been lost. But you underestimated how much still remains."]
+    },
+    {
+        "question": "For all vertebrate species (animals with skeletons), how much did their wild populations decline on average during the past 50 years?",
+        "choices": ["Around 10% decline", "Around 40% decline", "Around 70% decline"],
+        "answer": ["Around 70% decline","25%","There has been a bigger decline across wild populations of mammals, birds, fish, amphibians and reptiles than you imagined."]
+    },
+    {
+        "question": "How much of the oxygen that the Amazon forest produces do we humans breathe?",
+        "choices": ["Less than 1%", "30%", "60%"],
+        "answer": ["Less than 1%","16%","Less than 1% of the oxygen produced by the Amazon forest  is added to the oxygen in the atmosphere and breathed by humans."]
+    }
+  ],
+  "$PlasticSea": [
+    {
+        "question": "How much of the excess heat from global warming is captured in the oceans?",
+        "choices": ["Around 90%", "Around 50%", "Around 10%"],
+        "answer": ["Around 90%","8%","Most people are unaware that most global warming is hiding in the seas. If you think your local weather shows you global warming, you don’t realize the size of the problem."]
+    },
+    {
+        "question": "What share of all plastic waste in the world ends up in the oceans?",
+        "choices": ["Around 36%", "Less than 1%", "More than 66%"],
+        "answer": ["Less than 1%","14%","Many wrongly think that most plastic waste ends up in oceans. They haven’t realized that almost all plastic waste stays on land."]
+    },
+    {
+        "question": "What happened to the annual number of oil spills from tankers worldwide since the 1970s?",
+        "choices": ["Decreased tenfold", "Stayed about the same", "Increased tenfold"],
+        "answer": ["Decreased tenfold","37%","Today, the number of oil spills each year has decreased tenfold compared to the 1970s."]
+    },
+    {
+        "question": "Oil and gas were the marine sectors that made the most money in 2010. If trends continue as before, which sector will it be in 2030?",
+        "choices": ["Oil and gas", "Tourism", "Wave energy"],
+        "answer": ["Tourism","20%","Tourism is expected to become the marine sector making the most money in 2030."]
+    },
+    {
+        "question": "Since 2016, what has happened to the share of marine protected areas in national waters worldwide?",
+        "choices": ["Decreased about 75%", "Stayed about the same", "Increased about 75%"],
+        "answer": ["Increased about 75%","18%","The protected areas increased much more than you guessed! But that doesn't mean the most needed areas are protected, nor that the protection is good..."]
+    },
+    {
+        "question": "What share of all fish caught for food across the world comes from fish farming?",
+        "choices": ["Roughly 10%", "Roughly 35%", "Roughly 55%"],
+        "answer": ["Roughly 55%","30%","We eat more farmed fish than wild fish, just like we eat more farmed animals and plants rather than wild animals and berries from the woods."]
+    }
+  ],
+  "$ClimateWhat": [
+    {
+        "question": "How many people in the world live in areas that are 5 meters or less above sea level?",
+        "choices": ["Around 11%", "Around 31%", "Around 51%"],
+        "answer": ["Around 11%","23%","Most people overestimate the population at risk from rising sea levels. When you overestimate how many homes can be reached by rising sea levels, you may think it’s impossible for so many people to find new places to live."]
+    },
+    {
+        "question": "What happens to the average global temperature if we halve the annual net emissions of CO2, today?",
+        "choices": ["It decreases", "It stays the same", "It keeps increasing"],
+        "answer": ["It keeps increasing%","14%","As long as we emit any CO2 it keeps accumulating for many years, because the natural process for removing it is super slow, and we don’t have an effective way to capture it. Therefore, the temperature would keep increasing."]
+    },
+    {
+        "question": "How many of the 195 countries recognized by the UN have adopted the Paris Agreement on climate change and the environment?",
+        "choices": ["92", "142", "192"],
+        "answer": ["192","15%","A majority of the world’s countries want to collaborate against climate change – at least on paper."]
+    },
+    {
+        "question": "How does water vapor contribute to the greenhouse effect (which keeps the earth’s atmosphere warm)?",
+        "choices": ["Does not contribute", "Contributes significantly", "Water vapor is not a greenhouse gas"],
+        "answer": ["Water vapor contributes significantly","33%","Water vapor contributes significantly to the natural greenhouse effect."]
+    },
+    {
+        "question": "Globally, people eat an average of 6kg of beef and veal a year. How much fish is consumed on average per person?",
+        "choices": ["2mm/year (0.08in)", "20mm/year (0.8in)", "200mm/year(8in)"],
+        "answer": ["2mm/year (0.08in)","29%","Worldwide, the average sea level has been rising by 2mm (0.08 inches) per year over the last 100 years."]
+    },
+    {
+        "question": "Currently, the average temperature on Earth is 15C. What would the average temperature on Earth be without greenhouse gases?",
+        "choices": ["-18C", "+6C", "+21C"],
+        "answer": ["-18C","23%","Without the natural greenhouse effect from greenhouse gases, the earth would be much colder (around -18C)."]
+    },
+    {
+        "question": "Which of these gases is NOT a greenhouse gas",
+        "choices": ["Water vapor", "Nitrogen gas", "Ozone"],
+        "answer": ["Nitrogen gas","10%","The greenhouse effect and climate change are two different things. The greenhouse effect is vital for life on earth. The main one of these gases is water vapor."]
+    }
+  ]
+}
