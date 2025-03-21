@@ -21,7 +21,6 @@ Stock App - Ape Trading
 
     <h2 style="font-size: 3rem; color: white; text-align: center; margin-top: 50px;">Choose a Stock to Invest In:</h2>
 
-    <!-- List of stocks to invest in -->
     <div class="d-flex justify-content-center mt-4">
         <ul class="list-group list-group-flush" style="max-width: 400px;">
             {% for stock, price in stocks.items() %}
@@ -34,7 +33,6 @@ Stock App - Ape Trading
 
     <h2 style="font-size: 2rem; color: white; text-align: center; margin-top: 50px;">Answer the Daily Question:</h2>
 
-    <!-- Daily Question Form -->
     <div class="d-flex justify-content-center mt-4">
         <form action="{{ url_for('invest') }}" method="POST" style="width: 100%; max-width: 500px;">
             <div class="mb-3">

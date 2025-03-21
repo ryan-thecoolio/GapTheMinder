@@ -25,6 +25,33 @@ body {
     background-color: #ffbf00;
 }
 
+/* Custom gold styling for buttons */
+.btn-gold {
+    background-color: #ffd558;
+    color: 383838;
+    border: none;
+}
+
+.btn-gold:hover {
+    background-color: #e0a900;
+}
+
+/* Default button styles */
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-primary {
+    background-color: #007bff; /* Default blue color */
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Styling for text area */
 textarea {
     background-color: #d6d6d6;
 }

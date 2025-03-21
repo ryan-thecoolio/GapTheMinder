@@ -1,44 +1,50 @@
 {% extends "base.html" %}
-{% block title %}
-Ape Trading
-{% endblock %}
-{% block content %}
-<div class="container-fluid p-0">
-    <!-- Hero section with full height -->
-    <div class="vh-100 position-relative">
-        <div class="d-flex align-items-center justify-content-center position-absolute top-50 start-50 translate-middle flex-nowrap">
-            <img src="https://s3.eu-west-1.amazonaws.com/static.gapminder.org/GapminderMedia/wp-uploads/20191012155318/gapminder-method.png"
-                 class="img-fluid me-3"
-                 style="width: 200px;"
-                 alt="Sample Image">
-            <div class="text-nowrap">
-                <h1 class="mb-0" style="font-size: 6rem; color: white;">APE Trading</h1>
-                <h2 class="mt-0" style="font-size: 3rem; color: #d6d6d6;">Invest in the Truth</h2>
-            </div>
-        </div>
-        <div class="position-absolute start-50 translate-middle-x" style="bottom: 250px;">
-            <h4 style="font-size: 2rem; color: #CACACA; white-space: nowrap;">Did you know that less than 1% of plastic waste ends up in the ocean?</h4>
-        </div>
-        <div class="position-absolute start-50 translate-middle-x" style="bottom: 150px">
-            <section class="d-flex justify-content-center mt-2">
-                <a href="/login" class="btn btn-primary me-2">Login</a>
-                <a href="/signup" class="btn btn-success me-2">Sign Up</a>
-                <a href="#about-section" class="btn btn-secondary">About</a>
-            </section>
-        </div>
-    </div>
 
-    <!-- About section now outside the hero section -->
-    <section id="about-section" class="py-5" style="background-color: #f8f9fa; text-align: center; color: #333;">
-        <div class="container">
-            <h2 style="font-size: 2.5rem; margin-bottom: 20px;">About APE Trading</h2>
-            <p style="font-size: 1.25rem; line-height: 1.6;">
-                The app is designed to educate and help people to critically think about the impact they have in common misconceptions about the world. For example, a study by Gapminder found that 86% of people believe most plastic waste is in the ocean. This untrue claim reflects society’s collective judgment of our future.
-            </p>
-            <p style="font-size: 1.25rem; line-height: 1.6;">
-                Thus, Ape Trading is a stock simulating app that combats people’s biases through an engaging simulation where individuals gain or lose money based on statements that are true or false respectively. We believe, the value of virtual currency can support user’s valuing the negative impacts of spreading misconceptions that prevent positive change for the future.
-            </p>
-        </div>
-    </section>
+{% block content %}
+<div class="container mt-4">
+    <h2 style="font-size: 2rem; color: white; text-align: center; margin-top: 50px;">Invest in APE Trading:</h2>
+
+    <div class="d-flex justify-content-center mt-4">
+        <form action="{{ url_for('invest') }}" method="POST" style="width: 100%; max-width: 500px;">
+            <div class="mb-3">
+                <p class="text-white">You have ${{ '%.2f' % balance }}</p>
+                <label class="form-label text-white">Select Stock:</label>
+                <div id="stockButtons" class="d-flex flex-wrap gap-2">
+                    {% for stock in questions.keys() %}
+                        <button type="button" class="btn btn-secondary stock-btn"
+                                onclick="selectStock('{{ stock }}', this)">
+                            {{ stock }}
+                        </button>
+                    {% endfor %}
+                </div>
+                <input type="hidden" name="stock" id="selectedStock" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label text-white">Question:</label>
+                <p id="questionText" class="text-white"></p>
+                <input type="hidden" name="question_index" id="questionIndex" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label text-white">Your Answer:</label>
+                <div id="answerButtons" class="d-flex flex-wrap gap-2"></div>
+                <input type="hidden" name="answer" id="selectedAnswer" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="amount" class="form-label text-white">Amount to Invest ($):</label>
+                <input type="number" class="form-control" id="amount" name="amount" required min="1">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Invest</button>
+        </form>
+    </div>
 </div>
+
+<script>
+    const questions = {{ questions | tojson }};
+</script>
+
+<script src="{{ url_for('static', filename='invest_form.js') }}"></script>
 {% endblock %}

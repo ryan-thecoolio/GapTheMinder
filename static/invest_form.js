@@ -1,50 +1,4 @@
-{% extends "base.html" %}
-
-{% block content %}
-<div class="container mt-4">
-    <h2 style="font-size: 2rem; color: white; text-align: center; margin-top: 50px;">Invest in APE Trading:</h2>
-
-    <div class="d-flex justify-content-center mt-4">
-        <form action="{{ url_for('invest') }}" method="POST" style="width: 100%; max-width: 500px;">
-            <div class="mb-3">
-                <p class="text-white">You have ${{ '%.2f' % balance }}</p>
-                <label class="form-label text-white">Select Stock:</label>
-                <div id="stockButtons" class="d-flex flex-wrap gap-2">
-                    {% for stock in questions.keys() %}
-                        <button type="button" class="btn btn-secondary stock-btn"
-                                onclick="selectStock('{{ stock }}', this)">
-                            {{ stock }}
-                        </button>
-                    {% endfor %}
-                </div>
-                <input type="hidden" name="stock" id="selectedStock" required>
-            </div>
-
-            <!-- Dynamic Question -->
-            <div class="mb-3">
-                <label class="form-label text-white">Question:</label>
-                <p id="questionText" class="text-white"></p>
-                <input type="hidden" name="question_index" id="questionIndex" required>
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label text-white">Your Answer:</label>
-                <div id="answerButtons" class="d-flex flex-wrap gap-2"></div>
-                <input type="hidden" name="answer" id="selectedAnswer" required>
-            </div>
-
-            <div class="mb-3">
-                <label for="amount" class="form-label text-white">Amount to Invest ($):</label>
-                <input type="number" class="form-control" id="amount" name="amount" required min="1">
-            </div>
-
-            <button type="submit" class="btn btn-primary">Invest</button>
-        </form>
-    </div>
-</div>
-
-<script>
-    const questions = {{ questions | tojson }}; // Assuming this is coming from Flask
+document.addEventListener('DOMContentLoaded', function() {
     const stockButtons = document.querySelectorAll('.stock-btn');
     const answerButtonsContainer = document.getElementById('answerButtons');
     const questionText = document.getElementById('questionText');
@@ -58,6 +12,7 @@
         // Reset stock button styles
         stockButtons.forEach(btn => {
             btn.classList.remove('btn-primary');
+            btn.classList.remove('btn-gold');
             btn.classList.add('btn-secondary');
         });
 
@@ -101,6 +56,7 @@
         const answerButtons = document.querySelectorAll('.answer-btn');
         answerButtons.forEach(btn => {
             btn.classList.remove('btn-primary');
+            btn.classList.remove('btn-gold');
             btn.classList.add('btn-secondary');
         });
 
@@ -108,5 +64,8 @@
         button.classList.remove('btn-secondary');
         button.classList.add('btn-gold'); // Turn selected answer button gold
     }
-</script>
-{% endblock %}
+
+    // Make functions globally accessible
+    window.selectStock = selectStock;
+    window.selectAnswer = selectAnswer;
+});

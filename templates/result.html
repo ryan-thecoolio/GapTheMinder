@@ -13,7 +13,7 @@ Investment Result - Ape Trading
             <h1 class="text-danger">Even APES are smarter!</h1>
         {% endif %}
         <h3>Only {{ answer_percentage }} of people got this question right!</h3>
-        <!-- Table for displaying the question, answer, and stock details -->
+
         <div class="mt-4">
             <table class="table table-bordered">
                 <thead>
@@ -22,15 +22,21 @@ Investment Result - Ape Trading
                         <th>Price Change (%)</th>
                         <th>Invested Amount ($)</th>
                         <th>New Price ($)</th>
+                        <th>Investment Return ($)</th>
                         <th>Your Balance ($)</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>{{ stock }}</td>
-                        <td>{{ '%.2f' % (price_change * 100) }}%</td>
-                        <td>{{ amount }}</td>
+                        <td class="{% if price_change > 0 %}text-success{% else %}text-danger{% endif %}">
+                            {{ '%.2f' % (price_change) }}%
+                        </td>
+                        <td>{{ '%.2f' % amount }}</td>
                         <td>{{ '%.2f' % stock_data[stock] }}</td>
+                        <td class="{% if amount_change > 0 %}text-success{% else %}text-danger{% endif %}">
+                            {{ '%.2f' % amount_change }}
+                        </td>
                         <td>{{ '%.2f' % new_balance }}</td>
                     </tr>
                 </tbody>
@@ -41,12 +47,10 @@ Investment Result - Ape Trading
         </div>
     </div>
 
-        <!-- Navigation buttons -->
-        <div class="mt-4">
-            <a href="/investment" class="btn btn-primary">Back to Investment</a>
-            <a href="/" class="btn btn-secondary">Homepage</a>
-            <a href="/logout" class="btn btn-danger">Logout</a>
-        </div>
+    <div class="mt-4">
+        <a href="/investment" class="btn btn-primary">Back to Investment</a>
+        <a href="/" class="btn btn-secondary">Homepage</a>
+        <a href="/logout" class="btn btn-danger">Logout</a>
     </div>
 </div>
 {% endblock %}

@@ -10,7 +10,6 @@ app.secret_key = 'helloworld!gaptheminderhackathonyay!!!'
 
 users_db = {}
 
-# Stock Options
 stock_data = {
     "$PlasticSea": 100,
     "$LiveLaughLand": 50,
@@ -90,9 +89,13 @@ def invest_form():
 
 @app.route('/result', methods=['POST'])
 def invest():
+    if 'user' not in session:
+        return redirect(url_for('login'))  # Ensure the user is logged in before proceeding
+
     stock = request.form['stock']
     user_answer = request.form['answer']
     amount = float(request.form['amount'])
+    question_index = int(request.form['question_index'])  # Get the question index from the form
 
     if amount > session['balance']:
         return redirect(url_for('invest_form'))
@@ -100,36 +103,49 @@ def invest():
     if stock not in questions:
         return redirect(url_for('invest_form'))
 
-    question_data = random.choice(questions[stock])
+    question_data = questions[stock][question_index]
     correct_answer = question_data['answer'][0]  # Get only the first answer
     question_text = question_data['question']  # Get the question text
     answer_percentage = question_data['answer'][1]
     answer_detail = question_data['answer'][2]
 
     if user_answer == correct_answer:
-        price_change = random.uniform(0.05, 0.15)  # Stock price increases 5-15%
-        session['balance'] += amount
+        price_change = random.uniform(0.05, 0.20)  # 5-20% increase
         result = "correct"
     else:
-        price_change = random.uniform(0.25, 0.50)  # Stock price drops 25-75%
-        session['balance'] -= amount
+        price_change = random.uniform(0.25, 0.75)  # 25-75% decrease
         result = "incorrect"
+        price_change = -price_change
+
+    old_price = stock_data[stock]
+    new_price = old_price * (1 + price_change)
+
+    new_price = max(10, new_price)
+
+    stock_data[stock] = new_price
 
     if 'stock_prices' not in session:
-        session['stock_prices'] = {stock: [price] for stock, price in stock_data.items()}
+        session['stock_prices'] = {stock: [old_price] for stock, old_price in stock_data.items()}
+
+    session['stock_prices'][stock].append(new_price)
+
+    investment_return = amount * price_change
+
+    session['balance'] = session['balance'] - amount + (amount + investment_return)
 
     if 'balance_history' not in session:
         session['balance_history'] = [session['balance']]
+    else:
+        session['balance_history'].append(session['balance'])
 
-    # Update stock price
-    new_price = max(10, stock_data[stock] * (1 + price_change))
-    stock_data[stock] = new_price
-    session['stock_prices'][stock].append(new_price)
-    session['balance_history'].append(session['balance'])
-
-    users_db[session['user']]['balance'] = session['balance']
+    if session['user'] in users_db:
+        users_db[session['user']]['balance'] = session['balance']
+    else:
+        return "Error: User not found in the database."
 
     chart_html = generate_chart(session['balance_history'], session['stock_prices'])
+
+    amount_change = investment_return
 
     return render_template('result.html',
                            stock=stock,
@@ -142,8 +158,8 @@ def invest():
                            correct_answer=correct_answer,
                            question_text=question_text,
                            answer_percentage=answer_percentage,
-                           answer_detail=answer_detail)
-
+                           answer_detail=answer_detail,
+                           amount_change=amount_change)
 
 def generate_chart(balance_history, stock_prices):
     fig = go.Figure()
